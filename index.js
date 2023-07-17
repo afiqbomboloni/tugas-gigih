@@ -96,17 +96,10 @@ app.get('/sorted-song', (req, res) => {
     try {
         const song = playlist.getSortedSongsByPlayCount();
 
-        const songWithIndex = song.map((songs, index) => ({
-            index: index + 1,
-            title: songs.title,
-            artists: songs.artists,
-            url: songs.url,
-            playCount: songs.playCount
-        }))
         res.status(200).json({
             status: 200,
             message: "success",
-            song: songWithIndex
+            song: song
         });
     } catch (error) {
        throw new Error(error); 
